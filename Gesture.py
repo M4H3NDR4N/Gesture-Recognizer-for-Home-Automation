@@ -1,11 +1,10 @@
 import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.IN)
-input_value = GPIO.input(11)
-GPIO.setup(28, GPIO.OUT)
 import cv2
 import numpy as np
 import math
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.IN)
+GPIO.setup(28, GPIO.OUT)
 cam=cv2.VideoCapture(0)
 while(cam.isOpened):
     ret,img=cam.read()
@@ -49,8 +48,7 @@ elif count_defects==3:
     GPIO.output(33, GPIO.HIGH)
 elif count_defects==4:
     GPIO.output(38, GPIO.HIGH)
-else:
-    cv2.putText(img,"Hi",(50,50),cv2.FONT_HESRSHEY_SIMPLEX,2,2)
+
     
     
 cv2.imshow('Gesture',img)
